@@ -35,8 +35,8 @@ class tweet extends activeRecord {
       $stmt = self::$db->conn->prepare($sql);
       $result = $stmt->execute([ 'userId' => $userId ]);
       $returnTable = [];
-      if ($result !== false && $result->rowCount() > 0) {
-          foreach ($result as $row){
+      if ($result !== false && $stmt->rowCount() > 0) {
+          foreach ($stmt as $row){
             $loadedTweet = new tweet();
             $loadedTweet->id = $row['id'];
             $loadedTweet->text = $row['text'];
@@ -52,7 +52,7 @@ class tweet extends activeRecord {
       $sql = "SELECT * FROM tweets";
       $result = self::$db->conn->query($sql);
       $returnTable = [];
-      if ($result !== false && $result->rowCount() > 0) {
+      if ($result ->rowCount() > 0) {
           foreach ($result as $row){
             $loadedTweet = new tweet();
             $loadedTweet->id = $row['id'];

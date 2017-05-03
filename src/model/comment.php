@@ -39,8 +39,8 @@ class comment extends activeRecord {
         $stmt = self::$db->conn->prepare($sql);
         $result = $stmt->execute([ 'postId' => $postId ]);
         $returnTable = [];
-        if ($result !== false && $result->rowCount() > 0) {
-            foreach ($result as $row){
+        if ($result !== false && $stmt->rowCount() > 0) {
+            foreach ($stmt as $row){
               $loadedComment = new comment();
               $loadedComment->id = $row['id'];
               $loadedComment->userId = $row['userId'];
@@ -57,7 +57,7 @@ class comment extends activeRecord {
         $sql = "SELECT * FROM comments";
         $result = self::$db->conn->query($sql);
         $returnTable = [];
-        if ($result !== false && $result->rowCount() > 0) {
+        if ($result->rowCount() > 0) {
             foreach ($result as $row){
                 $loadedComment = new comment();
                 $loadedComment->id = $row['id'];
