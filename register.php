@@ -1,6 +1,8 @@
 <?php
 require_once('./autoloader.php');
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
     if (!$_POST['email'] && !$_POST['username'] && !$_POST['password']){
         echo "Wprowadzono nieprawidłowe dane";

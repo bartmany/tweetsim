@@ -1,6 +1,8 @@
 <?php
 require_once('./autoloader.php');
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
     if (!empty($_POST['email']) && !empty($_POST['password'])){
         $passVerify = false;
