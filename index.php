@@ -29,6 +29,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             foreach ($comments as $comment){
                 $user = user::loadById($comment->getUserId());
                 echo "</br>tweetcomment</br>".$comment->getText()."</br>".$comment->getCreationDate()."</br>".$user->getUsername();
+                echo "<form action='' method='post' role='form'><label>Add comment</label><input type='text'><input type='submit'></form>";
             }
         }
     }
