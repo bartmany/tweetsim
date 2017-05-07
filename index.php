@@ -20,7 +20,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
   <body>
     <?php
     if (isset($user)){
-        echo 'Logged as '.$user->getUsername();
+        $login = $user->getUsername();
         $tweets = tweet::loadAll();
         foreach ($tweets as $tweet){
             $user = user::loadById($tweet->getUserId());
